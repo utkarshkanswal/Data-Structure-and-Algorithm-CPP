@@ -1,7 +1,6 @@
 /* Name: Utkarsh Kumar
 Institutions: NIT Meghalaya
 */
-
 #include <bits/stdc++.h>
 #define mod (1000000007)
 #define lli long long int
