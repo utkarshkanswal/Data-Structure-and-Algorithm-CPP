@@ -17,7 +17,7 @@ void seive()
         is_prime[i] = 1;
     is_prime[0] = 0;
     is_prime[1] = 0;
-    for (int i = 2; i * i <= n; i++) //Time Complexity: O(log(logn))
+    for (int i = 2; i * i <= n; i++) //Time Complexity: O(Nlog(logn))
     {
         if (is_prime[i])
         {
