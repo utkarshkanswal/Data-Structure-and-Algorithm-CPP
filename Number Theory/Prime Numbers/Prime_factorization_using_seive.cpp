@@ -1,3 +1,7 @@
+/* Author: Utkarsh Kumar
+Institution: NIT Meghalaya
+Codechef Username: utkarshkanswal
+*/
 #include <bits/stdc++.h>
 #define mod (1000000007)
 #define lli long long int
