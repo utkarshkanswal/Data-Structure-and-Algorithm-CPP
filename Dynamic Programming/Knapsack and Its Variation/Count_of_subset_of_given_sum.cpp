@@ -7,21 +7,19 @@
 #define rall(v) v.rbegin(), v.rend()
 using namespace std;
 //Time Complexity: O(n^2)
-bool is_equal_sum_partition(vector<int> &v, int n, int sum)
+int count_subset(vector<int> &v, int n, int sum)
 {
 
     int total = accumulate(all(v), 0);
-    if ((total & 1))
-        return false;
-    bool dp[n + 1][total + 1];
+    int dp[n + 1][total + 1];
     for (int i = 0; i <= n; i++)
     {
         for (int j = 0; j <= total; j++)
         {
             if (i == 0)
-                dp[i][j] = false;
+                dp[i][j] = 0;
             if (j == 0)
-                dp[i][j] = true;
+                dp[i][j] = 1;
         }
     }
     for (int i = 1; i <= n; i++)
@@ -29,15 +27,12 @@ bool is_equal_sum_partition(vector<int> &v, int n, int sum)
         for (int j = 1; j <= total; j++)
         {
             if (v[i - 1] <= j)
-                dp[i][j] = dp[i - 1][j - v[i - 1]] || dp[i - 1][j];
+                dp[i][j] = dp[i - 1][j - v[i - 1]] + dp[i - 1][j];
             else
                 dp[i][j] = dp[i - 1][j];
         }
     }
-    int sum = total / 2;
-    if (dp[n][sum] == true)
-        return true;
-    return false;
+    return dp[n][sum];
 }
 int main()
 {
@@ -45,12 +40,11 @@ int main()
     cin.tie(NULL);
     int n;
     cin >> n;
-    vector<int> v(n + 1, 0);
+    vector<int> v(n, 0);
     for (int i = 0; i < n; i++)
         cin >> v[i];
-    if (is_equal_sum_partition(v, n))
-        cout << "Yes\n";
-    else
-        cout << "No\n";
+    int sum = 0;
+    cin >> sum;
+    cout << count_subset(v, n, sum);
     return 0;
 }
