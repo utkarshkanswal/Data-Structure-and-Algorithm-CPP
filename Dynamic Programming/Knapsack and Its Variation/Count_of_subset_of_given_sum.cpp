@@ -9,7 +9,6 @@ using namespace std;
 //Time Complexity: O(n^2)
 int count_subset(vector<int> &v, int n, int sum)
 {
-
     int total = accumulate(all(v), 0);
     int dp[n + 1][total + 1];
     for (int i = 0; i <= n; i++)
